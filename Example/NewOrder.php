@@ -1,17 +1,10 @@
 <?php
 require_once '../vendor/autoload.php';
 
-if (!function_exists('curl_reset'))
-{
-    function curl_reset(&$ch)
-    {
-        $ch = curl_init();
-    }
-}
-
-$apiKey = 'vbm1lxide8rkibzos16232b816eea0oq7qbqfxry';
+$apiKey = 'YOUR_API_KEY';
 $client = new \Bdok\PostGateway\Client($apiKey);
 
+// Your order array
 $fakeOrder = [
     'customerPhone' => '09125076324',
     'reference' => '123456',
@@ -28,6 +21,8 @@ $fakeOrder = [
     'customerEmail' => 'faghani.a@gmail.com',
 ];
 
+// Submit order
 $res = $client->newOrder($fakeOrder);
 
+// An array, $res[1] => Post tracking number
 var_dump($res);
