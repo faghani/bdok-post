@@ -29,7 +29,7 @@ class Client {
      *
      * @var string
      */
-    public $apiBaseUri = 'http://localhost/main/api/'; // @todo change to bdok.ir api!
+    public $apiBaseUri = 'http://bdok.ir/api/';
 
     /**
      * Create a new Client instance.

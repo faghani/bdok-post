@@ -16,7 +16,7 @@ trait ChangeState
     {
         if (
             !is_numeric($tracking_number) ||
-            !in_array($state, [1,2])
+            !in_array((int)$state, [1,2])
         ) {
             throw new ValidationException([]);
         }
