@@ -21,8 +21,6 @@ versionFile="../version.txt"
 # and replace it with newly specified version number
 sed -i.backup -E "s/\= v[0-9.]+/\= $versionLabel/" $versionFile $versionFile
 
-slam
-
 # remove backup file created by sed command
 rm $versionFile.backup
 
