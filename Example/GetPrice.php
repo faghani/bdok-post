@@ -6,7 +6,7 @@ $client = new \Bdok\PostGateway\Client($apiKey);
 
 // Get price
 $res = $client->getPrice([
-    'weight' => 100, // Product weight in gr
+    'weight' => 100, // Product weight in g
     'price' => 1000, // Product price
     'state' => 1, // Id state
     'city' => 1, // Id city
