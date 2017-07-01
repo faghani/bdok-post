@@ -3,6 +3,7 @@
   "description": "Bdok Post gateway client (official)",
   "keywords": ["bdok", "post", "gateway"],
   "license": "MIT",
+  "version": "0.1.0",
   "authors": [
     {
       "name": "Alireza Faghani",
