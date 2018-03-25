@@ -21,7 +21,7 @@ trait GetPrice
         $result = $this->post('post.php', $data)['message']['data'];
         $result = explode(';', $result);
 
-        if (!is_array($result) || $result[0] == 1 || $result[1] == 0) {
+        if (! is_array($result) || $result[0] == 1 || $result[1] == 0) {
             throw new ValidationException([]);
         }
 
