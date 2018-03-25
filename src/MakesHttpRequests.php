@@ -2,12 +2,12 @@
 
 namespace Bdok\PostGateway;
 
+use Psr\Http\Message\ResponseInterface;
+use Bdok\PostGateway\Exceptions\TimeoutException;
+use Bdok\PostGateway\Exceptions\NotFoundException;
+use Bdok\PostGateway\Exceptions\ValidationException;
 use Bdok\PostGateway\Exceptions\FailedActionException;
 use Bdok\PostGateway\Exceptions\InvalidApiKeyException;
-use Bdok\PostGateway\Exceptions\NotFoundException;
-use Bdok\PostGateway\Exceptions\TimeoutException;
-use Bdok\PostGateway\Exceptions\ValidationException;
-use Psr\Http\Message\ResponseInterface;
 
 trait MakesHttpRequests
 {

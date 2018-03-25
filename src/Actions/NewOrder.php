@@ -44,7 +44,7 @@ trait NewOrder
         $requiredFields = ['customerPhone', 'reference', 'state', 'city', 'names', 'weight', 'price', 'shipment', 'payment', 'customerName', 'address', 'postalCode', 'customerEmail'];
         foreach ($requiredFields as $field) {
             foreach ($data as $key => $val) {
-                if (!isset($data[$field])) {
+                if (! isset($data[$field])) {
                     throw new ValidationException([]);
                 }
             }

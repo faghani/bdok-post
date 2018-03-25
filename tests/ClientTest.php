@@ -23,7 +23,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $client = new \Bdok\PostGateway\Client('123', $http = \Mockery::mock('GuzzleHttp\Client'));
 
         $http->shouldReceive('request')->once()->with('POST', 'post.php', \Mockery::on(function (&$data) {
-            if (!is_array($data)) {
+            if (! is_array($data)) {
                 return false;
             }
 
@@ -63,7 +63,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $client = new \Bdok\PostGateway\Client('123', $http = \Mockery::mock('GuzzleHttp\Client'));
 
         $http->shouldReceive('request')->once()->with('POST', 'post.php', \Mockery::on(function (&$data) {
-            if (!is_array($data)) {
+            if (! is_array($data)) {
                 return false;
             }
 
@@ -88,7 +88,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $client = new \Bdok\PostGateway\Client('123', $http = \Mockery::mock('GuzzleHttp\Client'));
 
         $http->shouldReceive('request')->once()->with('POST', 'post.php', \Mockery::on(function (&$data) {
-            if (!is_array($data)) {
+            if (! is_array($data)) {
                 return false;
             }
 

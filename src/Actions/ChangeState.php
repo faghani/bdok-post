@@ -19,8 +19,8 @@ trait ChangeState
     public function changeState($tracking_number, $state)
     {
         if (
-            !is_numeric($tracking_number) ||
-            !in_array((int) $state, [1, 2])
+            ! is_numeric($tracking_number) ||
+            ! in_array((int) $state, [1, 2])
         ) {
             throw new ValidationException([]);
         }
