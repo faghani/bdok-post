@@ -13,17 +13,20 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         $dummyProduct = [
             'weight' => 100,
-            'price' => 1000,
-            'state' => 1, // Tehran <3
-            'city' => 1, // Tehran <3
-            'tip' => 0, // Sefareshi
-            'cod' => 0, // With COD
+            'price'  => 1000,
+            'state'  => 1, // Tehran <3
+            'city'   => 1, // Tehran <3
+            'tip'    => 0, // Sefareshi
+            'cod'    => 0, // With COD
         ];
 
         $client = new \Bdok\PostGateway\Client('123', $http = \Mockery::mock('GuzzleHttp\Client'));
 
-        $http->shouldReceive('request')->once()->with('POST', 'post.php', \Mockery::on(function(&$data) {
-            if (!is_array($data)) return false;
+        $http->shouldReceive('request')->once()->with('POST', 'post.php', \Mockery::on(function (&$data) {
+            if (!is_array($data)) {
+                return false;
+            }
+
             return true;
         }))->andReturn(
             $response = Mockery::mock('GuzzleHttp\Psr7\Response')
@@ -36,31 +39,34 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($res, ['36770', '26770', '3309']);
     }
 
-
     //@todo this test needs improve!, Test buildDataString() on new Order!
+
     /** @test */
     public function new_order_method()
     {
         $fakeOrder = [
             'customerPhone' => '09125076324',
-            'reference' => '123456',
-            'state' => 1,
-            'city' => 1,
-            'names' => 'عروسک خرس مهربون',
-            'weight' => 250,
-            'price' => 15000,
-            'shipment' => 0, // Sefareshi
-            'payment' => 0, // COD
-            'customerName' => 'علیرضا فغانی',
-            'address' => 'پاسداران گلستان اول در قهوه ای پلاک 0',
-            'postalCode' => 1234567890,
+            'reference'     => '123456',
+            'state'         => 1,
+            'city'          => 1,
+            'names'         => 'عروسک خرس مهربون',
+            'weight'        => 250,
+            'price'         => 15000,
+            'shipment'      => 0, // Sefareshi
+            'payment'       => 0, // COD
+            'customerName'  => 'علیرضا فغانی',
+            'address'       => 'پاسداران گلستان اول در قهوه ای پلاک 0',
+            'postalCode'    => 1234567890,
             'customerEmail' => 'faghani.a@gmail.com',
         ];
 
         $client = new \Bdok\PostGateway\Client('123', $http = \Mockery::mock('GuzzleHttp\Client'));
 
-        $http->shouldReceive('request')->once()->with('POST', 'post.php', \Mockery::on(function(&$data) {
-            if (!is_array($data)) return false;
+        $http->shouldReceive('request')->once()->with('POST', 'post.php', \Mockery::on(function (&$data) {
+            if (!is_array($data)) {
+                return false;
+            }
+
             return true;
         }))->andReturn(
             $response = Mockery::mock('GuzzleHttp\Psr7\Response')
@@ -81,8 +87,11 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         $client = new \Bdok\PostGateway\Client('123', $http = \Mockery::mock('GuzzleHttp\Client'));
 
-        $http->shouldReceive('request')->once()->with('POST', 'post.php', \Mockery::on(function(&$data) {
-            if (!is_array($data)) return false;
+        $http->shouldReceive('request')->once()->with('POST', 'post.php', \Mockery::on(function (&$data) {
+            if (!is_array($data)) {
+                return false;
+            }
+
             return true;
         }))->andReturn(
             $response = Mockery::mock('GuzzleHttp\Psr7\Response')
@@ -98,6 +107,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
             $client->changeState(12345678901234567890, 33);
         } catch (\Bdok\PostGateway\Exceptions\ValidationException $e) {
             $this->assertEquals($e->getMessage(), 'The given data failed to pass validation.');
+
             return;
         }
     }

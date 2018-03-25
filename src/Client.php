@@ -4,7 +4,8 @@ namespace Bdok\PostGateway;
 
 use GuzzleHttp\Client as HttpClient;
 
-class Client {
+class Client
+{
     use MakesHttpRequests,
         Actions\GetPrice,
         Actions\NewOrder,
@@ -25,7 +26,7 @@ class Client {
     public $guzzle;
 
     /**
-     * Api base url
+     * Api base url.
      *
      * @var string
      */
@@ -34,8 +35,9 @@ class Client {
     /**
      * Create a new Client instance.
      *
-     * @param  string $apiKey
-     * @param  \GuzzleHttp\Client $guzzle
+     * @param string             $apiKey
+     * @param \GuzzleHttp\Client $guzzle
+     *
      * @return void
      */
     public function __construct($apiKey, HttpClient $guzzle = null)
@@ -43,13 +45,13 @@ class Client {
         $this->apiKey = $apiKey;
 
         $this->guzzle = $guzzle ?: new HttpClient([
-            'base_uri' => $this->apiBaseUri,
+            'base_uri'    => $this->apiBaseUri,
             'http_errors' => false,
-            'headers' => [
+            'headers'     => [
                 'Authorization' => 'Bearer '.$this->apiKey,
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json'
-            ]
+                'Accept'        => 'application/json',
+                'Content-Type'  => 'application/json',
+            ],
         ]);
     }
 }

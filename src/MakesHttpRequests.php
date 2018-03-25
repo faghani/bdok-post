@@ -2,20 +2,21 @@
 
 namespace Bdok\PostGateway;
 
-use Psr\Http\Message\ResponseInterface;
-use Bdok\PostGateway\Exceptions\TimeoutException;
-use Bdok\PostGateway\Exceptions\NotFoundException;
-use Bdok\PostGateway\Exceptions\ValidationException;
 use Bdok\PostGateway\Exceptions\FailedActionException;
 use Bdok\PostGateway\Exceptions\InvalidApiKeyException;
+use Bdok\PostGateway\Exceptions\NotFoundException;
+use Bdok\PostGateway\Exceptions\TimeoutException;
+use Bdok\PostGateway\Exceptions\ValidationException;
+use Psr\Http\Message\ResponseInterface;
 
 trait MakesHttpRequests
 {
     /**
      * Make a POST request to server and return the response.
      *
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $uri
+     * @param array  $payload
+     *
      * @return mixed
      */
     private function post($uri, array $payload = [])
@@ -26,9 +27,10 @@ trait MakesHttpRequests
     /**
      * Make request to server and return the response.
      *
-     * @param  string $verb
-     * @param  string $uri
-     * @param  array $payload
+     * @param string $verb
+     * @param string $uri
+     * @param array  $payload
+     *
      * @return mixed
      */
     private function request($verb, $uri, array $payload = [])
@@ -47,13 +49,15 @@ trait MakesHttpRequests
     }
 
     /**
-     * @param  \Psr\Http\Message\ResponseInterface $response
-     * @return void
+     * @param \Psr\Http\Message\ResponseInterface $response
+     *
      * @throws \Exception
      * @throws ValidationException
      * @throws InvalidApiKeyException
      * @throws NotFoundException
      * @throws FailedActionException
+     *
+     * @return void
      */
     private function handleRequestError(ResponseInterface $response)
     {
@@ -79,10 +83,12 @@ trait MakesHttpRequests
     /**
      * Retry the callback or fail after x seconds.
      *
-     * @param  integer $timeout
-     * @param  callable $callback
-     * @return mixed
+     * @param int      $timeout
+     * @param callable $callback
+     *
      * @throws TimeoutException
+     *
+     * @return mixed
      */
     public function retry($timeout, $callback)
     {
