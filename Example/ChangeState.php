@@ -1,4 +1,5 @@
 <?php
+
 require_once '../vendor/autoload.php';
 
 $apiKey = 'YOUR_API_KEY';

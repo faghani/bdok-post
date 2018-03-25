@@ -7,10 +7,13 @@ use Bdok\PostGateway\Exceptions\ValidationException;
 trait GetPrice
 {
     /**
-     * Get shipping price
+     * Get shipping price.
+     *
      * @param array $data
-     * @return array
+     *
      * @throws ValidationException
+     *
+     * @return array
      */
     public function getPrice(array $data)
     {

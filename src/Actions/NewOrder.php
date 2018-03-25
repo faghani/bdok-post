@@ -7,8 +7,10 @@ use Bdok\PostGateway\Exceptions\ValidationException;
 trait NewOrder
 {
     /**
-     * Create new order
+     * Create new order.
+     *
      * @param array $data
+     *
      * @return array
      */
     public function newOrder(array $data)
@@ -16,7 +18,7 @@ trait NewOrder
         $dataString = $this->buildDataString($data);
         $data = [
             'action' => 'newOrder',
-            'data' => $dataString
+            'data'   => $dataString,
         ];
 
         return $this->retry(30, function () use ($data) {
@@ -28,11 +30,13 @@ trait NewOrder
     }
 
     /**
-     * Build Data string
+     * Build Data string.
      *
      * @param array $data
-     * @return string
+     *
      * @throws ValidationException
+     *
+     * @return string
      */
     protected function buildDataString(array $data)
     {
@@ -42,19 +46,19 @@ trait NewOrder
             foreach ($data as $key => $val) {
                 if (!isset($data[$field])) {
                     throw new ValidationException([]);
-                }    
+                }
             }
 
-            $finalString .= $data[$field] . '^';
+            $finalString .= $data[$field].'^';
         }
 
         $price = $this->getPrice([
             'weight' => $data['weight'],
-            'price' => $data['price'],
-            'state' => $data['state'],
-            'city' => $data['city'],
-            'tip' => $data['shipment'],
-            'cod' => $data['payment'],
+            'price'  => $data['price'],
+            'state'  => $data['state'],
+            'city'   => $data['city'],
+            'tip'    => $data['shipment'],
+            'cod'    => $data['payment'],
         ]);
 
         $finalString .= '0^'.$price[0].'^'.$price[2]; // remember that we already ends string with ^
